@@ -1,0 +1,7 @@
+🛠️ 1. Mailpit Setup (Done!)
+You're already done with this using:
+
+sudo bash < <(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh)
+✅ Confirm Mailpit UI at http://localhost:8025
+✅ SMTP listens on port 1025
+
