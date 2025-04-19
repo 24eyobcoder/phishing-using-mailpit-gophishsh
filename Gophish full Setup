@@ -1,0 +1,119 @@
+🎯  Create a Phishing Campaign in Gophish
+We’ll break it down into smaller chunks:
+
+🧰 4.1: Create a Landing Page
+This is the fake login page where victims will land.
+
+🔧 Steps:
+On the left sidebar in Gophish, click Landing Pages
+
+Click + New Page
+
+Fill in:
+
+Name: Fake Login
+
+URL: Leave it blank for now
+
+HTML: Paste this simple fake login form:
+
+html
+Copy
+Edit
+<html>
+<head><title>Login</title></head>
+<body>
+  <h2>Company Login</h2>
+  <form method="POST">
+    <input type="email" name="email" placeholder="Email"><br><br>
+    <input type="password" name="password" placeholder="Password"><br><br>
+    <input type="submit" value="Login">
+  </form>
+</body>
+</html>
+Check Capture Submitted Data
+
+Uncheck Capture Passwords if you're just testing ethically (or check it for a full test)
+
+Click Save Page
+
+🧾 4.2: Create an Email Template
+On the sidebar, click Email Templates
+
+Click + New Template
+
+Fill in:
+
+Name: Security Alert
+
+Subject: Action Required: Login Issue Detected
+
+From: it-support@yourdomain.com
+
+Body (Use this sample text):
+
+html
+Copy
+Edit
+Hello,
+
+We detected unusual activity on your account.  
+Please verify your login information by clicking the link below:
+
+<a href="{{.URL}}">Verify Now</a>
+No attachments needed.
+
+Click Save Template
+
+👤 4.3: Add Target Users (Groups)
+On the sidebar, click Users & Groups
+
+Click + New Group
+
+Name it Test Victims
+
+Add some test users (use real-looking emails like):
+
+graphql
+Copy
+Edit
+john@example.com
+alice@example.com
+testuser@yourdomain.com
+Click Save Group
+
+✅ With Landing Page, Email Template, and User Group ready, you're set for the campaign.
+
+Now let’s move to:
+
+🚀 Step 5: Launch Your First Campaign
+Click Campaigns on the left
+
+Click + New Campaign
+
+Fill in:
+
+Name: Test Campaign
+
+Email Template: Security Alert
+
+Landing Page: Fake Login
+
+URL: use http://localhost:8080 or http://<your-local-ip>:8080
+
+Sending Profile: Mailpit Test
+
+Group: Test Victims
+
+Click Launch Campaign
+
+📊 Monitor:
+Open Mailpit → see if emails are sent
+
+Click the phishing link in a test email
+
+Submit credentials → Gophish captures them
+
+Gophish dashboard shows open/click/submit events in real-time
+
+That’s it! You’ve fully set up a working phishing lab with Mailpit + Gophish 💥
